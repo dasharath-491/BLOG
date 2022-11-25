@@ -1,0 +1,64 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+.card-postcom {
+  margin-bottom: 50px;
+}
+
+.card-posts {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  border: 5px solid gray;
+}
+
+.card-image {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+}
+
+.container-detail {
+  margin-left: 20px;
+}
+
+.card-image {
+  width: 1000px;
+  height: 500px;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+.PostID {
+  margin-left: 200px;
+}
+
+.todo {
+  margin-left: -18px;
+}
+
+.todob {
+  margin-left: -12px;
+}
+
+.album1 {
+  margin-left: -10px;
+}
+
+.photos {
+  margin-left: 5px;
+}
+
+.d-flex {
+  margin-left: -10px;
+}
+
+.search {
+  margin-left: 9px;
+}
+
+.searchb {
+  margin-left: 10px;
+  background-color: #0d6efd;
+  color: white;
+}
