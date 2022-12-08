@@ -6,6 +6,7 @@ const Blog = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    // Fetch user data from API
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((json) => setUsers(json));

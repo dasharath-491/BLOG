@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
 function Album() {
@@ -10,6 +11,14 @@ function Album() {
       .then((response) => response.json())
       .then((json) => setAlbums(json));
   }, [id.id]);
+
+  function handleDeleteClick(title) {
+    //console.log(title);
+    const removeItem = albums.filter((album) => {
+      return album.title !== title;
+    });
+    setAlbums(removeItem);
+  }
 
   return (
     <div className="container my-3">
@@ -26,6 +35,13 @@ function Album() {
                 >
                   Photos
                 </Link>
+                <Button
+                  className="deletebuttonalbum mx-2"
+                  onClick={() => handleDeleteClick(album.title)}
+                  variant="danger"
+                >
+                  Delete
+                </Button>
               </div>
             </div>
           );

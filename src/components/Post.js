@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import AddPost from "./AddPost";
-
 import img1 from "./new.jpg";
 //import Pagination from "./Pegination";
 
@@ -10,15 +9,32 @@ function Post() {
   const [userIds, setUserIds] = useState([]);
   const id = useParams();
 
-  //const [currentPage, setCurrentPage] = useState(1);
-  //const [postsPerPage] = useState(5);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
 
-  //const indexOfLastPost = currentPage * postsPerPage;
-  //const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  // const currentuserIds = userIds.slice(indexOfFirstPost, indexOfLastPost);
+  const changeHandler = (event) => {
+    setTitle(event.target.value);
+  };
 
-  // Change page
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const changeBody = (event) => {
+    setBody(event.target.value);
+  };
+
+  const newPost = {
+    userid: `${id.id}`,
+    id: 101,
+    title: `${title}`,
+    body: `${body}`,
+  };
+
+  const submitHandler = () => {
+    // event.preventDefalt();
+    setUserIds([newPost, ...userIds]);
+    handleClose();
+    setTitle("");
+    setBody("");
+  };
+
   const [value, setValue] = useState("");
 
   const onChange = (event) => {
@@ -34,6 +50,14 @@ function Post() {
       .then((response) => response.json())
       .then((json) => setUserIds(json));
   }, [id.id]);
+
+  //Delete Button
+  function handleDeleteClick(id) {
+    const removeItem = userIds.filter((userId) => {
+      return userId.id !== id;
+    });
+    setUserIds(removeItem);
+  }
 
   const [show, setShow] = useState(false);
 
@@ -67,7 +91,11 @@ function Post() {
           .filter((userId) => {
             const searchTerm = value.toLowerCase();
             const title = userId.title.toLowerCase();
-            return title.startsWith(searchTerm) || title === searchTerm;
+            return (
+              title.startsWith(searchTerm) ||
+              title === searchTerm ||
+              title.includes(searchTerm)
+            );
           })
           .map((userId) => {
             return (
@@ -79,7 +107,11 @@ function Post() {
                 <img src={img1} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h5 className="card-title">
-                    <b>{userId.title}</b>
+                    <b>Title: {userId.title.slice(0, 15)}...</b>
+                  </h5>
+                  <h5 className="card-body1 my-3">
+                    <b>body: </b>
+                    {userId.body.slice(0, 50)}...
                   </h5>
                   <Link
                     className="btn btn-sn btn-primary m-1"
@@ -87,12 +119,25 @@ function Post() {
                   >
                     Detail
                   </Link>
+                  <Button
+                    className="deletebuttonpost"
+                    onClick={() => handleDeleteClick(userId.id)}
+                    variant="danger"
+                  >
+                    Delete
+                  </Button>
                 </div>
               </div>
             );
           })}
       </div>
-      <AddPost show={show} handleClose={handleClose} />
+      <AddPost
+        show={show}
+        changeHandler={changeHandler}
+        submitHandler={submitHandler}
+        changeBody={changeBody}
+        handleClose={handleClose}
+      />
 
       {/*<Pagination
         postsPerPage={postsPerPage}

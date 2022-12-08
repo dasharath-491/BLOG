@@ -20,7 +20,7 @@ function PostCom() {
             <div className="card-body" key={postcom.id}>
               <h4 className="card-postcom">
                 <b>BODY: </b>
-                {postcom.body}
+                {postcom.body}.
               </h4>
             </div>
           );

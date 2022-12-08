@@ -27,10 +27,10 @@ function PostDetail() {
                 <b>id: {postdetails.id}</b>
               </h1>
               <h4 className="card-name">
-                <b>title: {postdetails.title}</b>
+                <b>title: {postdetails.title}.</b>
               </h4>
               <h5 className="card-name ">
-                <b>body: {postdetails.body}</b>
+                <b>body: {postdetails.body}.</b>
               </h5>
               <PostCom />
             </div>
