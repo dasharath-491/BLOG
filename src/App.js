@@ -1,19 +1,23 @@
 import React from "react";
 import "./App.css";
-import Navrbar from "./components/Navrbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Blog from "./components/Blog";
-import Detail from "./components/Detail";
-import Post from "./components/Post";
-import Todo from "./components/Todo";
-import Album from "./components/Album";
-import Photos from "./components/Photos";
-import PostDetail from "./components/PostDetail";
+import ReducerUse from "./components/ReducerUse";
+// import MemoUse from "./components/MemoUse"
+// import CallbackUse from "./components/CallbackUse";
+
+// import Navrbar from "./components/Navrbar";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import Blog from "./components/Blog";
+// import Detail from "./components/Detail";
+// import Post from "./components/Post";
+// import Todo from "./components/Todo";
+// import Album from "./components/Album";
+// import Photos from "./components/Photos";
+// import PostDetail from "./components/PostDetail";
 
 function App() {
   return (
     <div>
-      <Router>
+      {/* <Router>
         <Navrbar />
         <Routes>
           <Route exact path="/Blog" element={<Blog />} />
@@ -24,7 +28,8 @@ function App() {
           <Route exact path="/photo/:id" element={<Photos />} />
           <Route exact path="/postdetail/:id" element={<PostDetail />} />
         </Routes>
-      </Router>
+      </Router> */}
+      <ReducerUse />
     </div>
   );
 }
